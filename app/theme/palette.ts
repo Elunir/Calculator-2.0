@@ -1,11 +1,8 @@
 export const palette = {
-  black: "#1d1d1d",
-  white: "#ffffff",
-  offWhite: "#e6e6e6",
-  orange: "#FBA928",
-  orangeDarker: "#EB9918",
-  lightGrey: "#939AA4",
-  lighterGrey: "#CDD4DA",
-  angry: "#dd3333",
-  deepPurple: "#5D2555",
+  yellowSea: "#f1a33b",
+  rainyGrey: "#A5A5A5",
+  carbon: '#333333',
+  black: '#000000',
+  white: '#FFFFFF',
+  angry: '#e10600',
 }

@@ -27,23 +27,15 @@ export const color = {
   /**
    * The main tinting color.
    */
-  primary: palette.orange,
+  primary: palette.yellowSea,
   /**
    * The main tinting color, but darker.
    */
-  primaryDarker: palette.orangeDarker,
-  /**
-   * A subtle color used for borders and lines.
-   */
-  line: palette.offWhite,
+  primaryDarker: palette.yellowSea,
   /**
    * The default color of text in many components.
    */
   text: palette.white,
-  /**
-   * Secondary information.
-   */
-  dim: palette.lightGrey,
   /**
    * Error messages and icons.
    */
