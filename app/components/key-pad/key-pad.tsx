@@ -95,6 +95,7 @@ export const KeyPad = observer(function KeyPad(props: KeyPadProps) {
     if (currentNumber) setCurrentNumber(currentNumber.slice(0, -1))
     if (!currentNumber && operator) setOperator("")
     if (!currentNumber && !operator && prevNumber) setPrevNumber(prevNumber.slice(0, -1))
+    if (!currentNumber && !operator && prevNumber && result) setResult(result.slice(0, -1))
   }
 
   React.useEffect(() => {
