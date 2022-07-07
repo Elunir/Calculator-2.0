@@ -11,10 +11,14 @@ export const CalculatorStoreModel = types
   })
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
   .actions((self) => ({
-    addition: (a, b) => {
-      const result = a+b
+    saveHistory: (a,b,o) => {
+      const result = {
+        firstNumber: a,
+        secondNumber: b,
+        operator: o,
+      }
       self.calculations.push(result)
-      return result
+      return self.calculations
     },
   })) // eslint-disable-line @typescript-eslint/no-unused-vars
 

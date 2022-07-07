@@ -4,7 +4,8 @@ import { StyleProp, TextStyle, View, ViewStyle } from "react-native"
 import { observer } from "mobx-react-lite"
 import { ButtonKey } from "../button-key/button-key"
 import { color } from "../../theme"
-import { Text } from "../../components"
+import { Text,History } from "../../components"
+import { useStores } from "../../models"
 
 const CONTAINER: ViewStyle = {
   flexDirection: "column-reverse",
@@ -41,6 +42,9 @@ export const KeyPad = observer(function KeyPad(props: KeyPadProps) {
   const [currentNumber, setCurrentNumber] = React.useState("")
   const [operator, setOperator] = React.useState("")
   const [result, setResult] = React.useState("0")
+
+  const { calculatorStore } = useStores()
+  const { calculations, saveHistory } = calculatorStore
 
   const handleNumber = (number: string) => {
     if (number === "." && currentNumber.includes(".")) return
@@ -80,6 +84,10 @@ export const KeyPad = observer(function KeyPad(props: KeyPadProps) {
           return
       }
     }
+    saveHistory(prevNumber,currentNumber,operator)
+    console.log('====================================');
+    console.log(calculations.toJSON());
+    console.log('====================================');
     setPrevNumber(result)
     setOperator("")
     setCurrentNumber("")
@@ -249,6 +257,7 @@ export const KeyPad = observer(function KeyPad(props: KeyPadProps) {
           </>
         )}
       </View>
+      <History />
     </View>
   )
 })

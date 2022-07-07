@@ -6,9 +6,9 @@ import { Instance, SnapshotIn, SnapshotOut, types } from "mobx-state-tree"
 export const CalculatorModel = types
   .model("Calculator")
   .props({
-    firstNumber: types.number,
-    secondNumber: types.number,
-    result: types.number
+    firstNumber: types.string,
+    secondNumber: types.string,
+    operator: types.string
   })
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
   .actions((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
