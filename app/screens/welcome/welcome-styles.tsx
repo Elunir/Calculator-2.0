@@ -1,12 +1,18 @@
-import { StyleSheet } from "react-native"
+import { Dimensions, StyleSheet } from "react-native"
 import { color } from "../../theme"
 
 export const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
     backgroundColor: color.palette.black,
     flex: 1,
-    justifyContent: "flex-end",
-    padding: 60
+  },
+  content:{
+    flex: 1,
+    justifyContent:'space-between',
+    paddingVertical: 60
+  },
+  history: {
+    alignItems: 'flex-end',
+    marginHorizontal: 40
   },
 })

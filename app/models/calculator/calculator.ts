@@ -8,7 +8,8 @@ export const CalculatorModel = types
   .props({
     firstNumber: types.string,
     secondNumber: types.string,
-    operator: types.string
+    operator: types.string,
+    result: types.string
   })
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
   .actions((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars

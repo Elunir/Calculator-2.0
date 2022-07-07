@@ -11,16 +11,43 @@ export const CalculatorStoreModel = types
   })
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
   .actions((self) => ({
-    saveHistory: (a,b,o) => {
+    saveHistory: (a: string, b: string, o: string) => {
+      let res = ''
+      switch (o) {
+        case "+":
+          res = String(parseFloat(a) + parseFloat(b))
+          break
+        case "-":
+          res = String(parseFloat(a) - parseFloat(b))
+          break
+        case "*":
+          res = String(parseFloat(a) * parseFloat(b))
+          break
+        case "/":
+          res = String(parseFloat(a) / parseFloat(b))
+          break
+        case "%":
+          res = String(parseFloat(a) % parseFloat(b))
+          break
+        default:
+          return
+      }
       const result = {
         firstNumber: a,
         secondNumber: b,
         operator: o,
+        result: res,
       }
       self.calculations.push(result)
       return self.calculations
     },
   })) // eslint-disable-line @typescript-eslint/no-unused-vars
+  .actions((self) => ({
+    deleteAll: () => {
+      self.calculations.splice(0, self.calculations.length)
+      return self.calculations
+    },
+  }))
 
 export interface CalculatorStore extends Instance<typeof CalculatorStoreModel> {}
 export interface CalculatorStoreSnapshotOut extends SnapshotOut<typeof CalculatorStoreModel> {}
