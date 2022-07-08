@@ -1,7 +1,6 @@
 import * as React from "react"
-import { StyleProp, View, ViewStyle, Modal, Pressable, Alert, FlatList, Text } from "react-native"
+import { StyleProp, View, ViewStyle, Modal, Pressable, Alert, FlatList, Text, TouchableOpacity } from "react-native"
 import { observer } from "mobx-react-lite"
-import { TouchableOpacity } from "react-native-gesture-handler"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import { HistoryCalculations } from "../index"
 import css from "./history-styles"

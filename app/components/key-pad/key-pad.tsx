@@ -46,47 +46,51 @@ export const KeyPad = observer(function KeyPad(props: KeyPadProps) {
 
   const { calculatorStore } = useStores()
   const { saveHistory } = calculatorStore
+
   const handleNumber = (number: string) => {
     if (number === "." && currentNumber.includes(".")) return
     setCurrentNumber(currentNumber + number)
   }
-  const handleOperator = (operator: string) => {
-    if (currentNumber === "") {
-      setOperator(operator)
+
+  const handleOperator = (o: string) => {
+    if (prevNumber !== "" && operator !== "" && currentNumber !== "") {
+      calculateResult()
+      setOperator(o)
       return
     }
-    if (prevNumber !== "") {
-      calculateResult()
+    if (currentNumber !== "" && prevNumber === "") {
+      setOperator(o)
+      setPrevNumber(currentNumber)
+      setCurrentNumber("")
     }
-    setOperator(operator)
-    setPrevNumber(currentNumber)
-    setCurrentNumber("")
+    if(prevNumber!=="") setOperator(o)
   }
+
   const calculateResult = () => {
     if (prevNumber !== "" && operator !== "" && currentNumber !== "") {
       switch (operator) {
         case "+":
-          setResult(String(parseFloat(prevNumber) + parseFloat(currentNumber)))
+          setResult(String((parseFloat(prevNumber) + parseFloat(currentNumber)).toFixed(2)))
           break
         case "-":
-          setResult(String(parseFloat(prevNumber) - parseFloat(currentNumber)))
+          setResult(String((parseFloat(prevNumber) - parseFloat(currentNumber)).toFixed(2)))
           break
         case "*":
-          setResult(String(parseFloat(prevNumber) * parseFloat(currentNumber)))
+          setResult(String((parseFloat(prevNumber) * parseFloat(currentNumber)).toFixed(2)))
           break
         case "/":
-          setResult(String(parseFloat(prevNumber) / parseFloat(currentNumber)))
+          setResult(String((parseFloat(prevNumber) / parseFloat(currentNumber)).toFixed(2)))
           break
         case "%":
-          setResult(String(parseFloat(prevNumber) % parseFloat(currentNumber)))
+          setResult(String((parseFloat(prevNumber) % parseFloat(currentNumber)).toFixed(2)))
           break
         default:
           return
       }
       saveHistory(prevNumber, currentNumber, operator)
       setPrevNumber(result)
-      setOperator("")
       setCurrentNumber("")
+      setOperator("")
     }
   }
   const allClear = () => {
@@ -239,7 +243,7 @@ export const KeyPad = observer(function KeyPad(props: KeyPadProps) {
           }}
         />
       </View>
-      <View style={[ROW, { alignSelf: "flex-end", flexWrap: "wrap", justifyContent: "flex-end" }]}>
+      <View style={[ROW, { alignSelf: "flex-end", flexWrap: "wrap", justifyContent: "flex-end", width: 300 }]}>
         {String(currentNumber + prevNumber).length > 4 ? (
           <>
             <Text style={[RESULT, { fontSize: 48 }]} text={String(prevNumber)} />

@@ -36,7 +36,7 @@ export const CalculatorStoreModel = types
         firstNumber: a,
         secondNumber: b,
         operator: o,
-        result: res,
+        result: String(parseFloat(res).toFixed(2)),
       }
       self.calculations.push(result)
       return self.calculations

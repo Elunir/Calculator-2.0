@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native"
+import { Platform, StyleSheet } from "react-native"
 import { color } from "../../theme"
 
 export const styles = StyleSheet.create({
@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   content:{
     flex: 1,
     justifyContent:'space-between',
-    paddingVertical: 60
+    paddingVertical: Platform.OS === 'ios'?60:28
   },
   history: {
     alignItems: 'flex-end',

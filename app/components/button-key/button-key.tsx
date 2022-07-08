@@ -1,9 +1,8 @@
 import * as React from "react"
-import { StyleProp, TextStyle,ViewStyle } from "react-native"
+import { StyleProp, TextStyle,ViewStyle, TouchableOpacity } from "react-native"
 import { observer } from "mobx-react-lite"
 import { color, typography } from "../../theme"
 import { Text } from "../text/text"
-import { TouchableOpacity } from "react-native-gesture-handler"
 
 const CONTAINER: ViewStyle = {
   height: 76,

@@ -35,7 +35,7 @@ export const style = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.8)',
         borderRadius: 20,
         elevation: 5,
-        height: Dimensions.get('screen').height - 60,
+        height: Dimensions.get('screen').height - 128,
         padding: 35,
         shadowColor: "#000",
         shadowOffset: {
