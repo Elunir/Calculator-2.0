@@ -49,6 +49,7 @@ export const KeyPad = observer(function KeyPad(props: KeyPadProps) {
 
   const handleNumber = (number: string) => {
     if (number === "." && currentNumber.includes(".")) return
+    if(prevNumber===result&&operator==="") return
     setCurrentNumber(currentNumber + number)
   }
 
@@ -70,19 +71,19 @@ export const KeyPad = observer(function KeyPad(props: KeyPadProps) {
     if (prevNumber !== "" && operator !== "" && currentNumber !== "") {
       switch (operator) {
         case "+":
-          setResult(String((parseFloat(prevNumber) + parseFloat(currentNumber)).toFixed(2)))
+          setResult(String(Math.round((parseFloat(prevNumber) + parseFloat(currentNumber))*100)/100))
           break
         case "-":
-          setResult(String((parseFloat(prevNumber) - parseFloat(currentNumber)).toFixed(2)))
+          setResult(String(Math.round((parseFloat(prevNumber) - parseFloat(currentNumber))*100)/100))
           break
         case "*":
-          setResult(String((parseFloat(prevNumber) * parseFloat(currentNumber)).toFixed(2)))
+          setResult(String(Math.round((parseFloat(prevNumber) * parseFloat(currentNumber))*100)/100))
           break
         case "/":
-          setResult(String((parseFloat(prevNumber) / parseFloat(currentNumber)).toFixed(2)))
+          setResult(String(Math.round((parseFloat(prevNumber) / parseFloat(currentNumber))*100)/100))
           break
         case "%":
-          setResult(String((parseFloat(prevNumber) % parseFloat(currentNumber)).toFixed(2)))
+          setResult(String(Math.round((parseFloat(prevNumber) % parseFloat(currentNumber))*100)/100))
           break
         default:
           return
